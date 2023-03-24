@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results!!</title>
+</head>
+<body>
+<ul>
+    <li th:each="item : ${results}">
+        Title: <div1 th:each="b:${item.blob}">
+            <span th:text="${b}">
+                <br>
+            </span>
+        </div1 >
+        <br>
+        Source: <div2 th:each="d:${item.domain}">
+            <span th:text="${d}">
+            </span>
+        </div2>
+        <br>
+        Link: <div3 th:each="l:${item.url}">
+            <a href target="_self">
+                <span th:text="${l}"/>
+            </a>
+    </div3>
+        <br>
+        Keyword matches: <div4 th:each="o:${item.occurances}">
+            <span th:text="${o}">
+            </span>
+    </div4>
+
+        <!--<p>List 2: <span th:text="${item.list2}"></span></p>
+        <p>List 3: <span th:text="${item.list3}"></span></p>
+        <p>List 4: <span th:text="${item.list4}"></span></p>/-->
+    </li>
+</ul>
+
+
+<ul>
+    <li th:each="b : ${Blob}">
+        <span th:text="${b}">
+        <br>
+        </span>
+    </li>
+    <li th:each="d : ${Domain}">
+            <span th:text="${d}">
+        </span>
+    </li>
+    <li th:each="l : ${Link}">
+        <span th:text="${l}">
+        </span>
+    </li>
+    <li th:each="o : ${Occurances}">
+        <span th:text="${o}">
+        </span>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+	<head>
+		<title>
+		Search Engine Project
+	</title>
+	</head>
+	<body>
+		<form action="/search" th:object="${data}">
+		<input type="text" th:field="${data.query}"/>
+		<input type="submit" value="Search!" />
+		</form>
+		<h1 th:text = "${message}"></h1>
+	</body>
+</html>
