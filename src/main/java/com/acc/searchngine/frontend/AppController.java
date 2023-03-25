@@ -20,20 +20,32 @@ import java.util.*;
 @Controller
 public class AppController {
 
-	@RequestMapping(value ="/hello" , method = RequestMethod.GET)
-	public String sayHello(@ModelAttribute("data") SessionData data)
+	@RequestMapping(value ="/" , method = RequestMethod.GET)
+	public String sayHello(@ModelAttribute("data") SessionData data, Model model)
+	{
+		//modelAndView.addObject("query",data.getQuery());
+
+		return "hello";
+	}
+
+	@RequestMapping(value ="/submitform" , method = RequestMethod.POST)
+	public String submitform(@ModelAttribute("data") SessionData data, Model model)throws Exception
 	{
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("query",data.getQuery());
-		return "/search?query="+data.getQuery();
+		String query = data.getQuery();
+		model.addAttribute("query", query);
+		modelAndView.setViewName("yellow");
+
+		return search(modelAndView,data,model);
 	}
+
 
 	@RequestMapping(value = "/search")
 	public String search(ModelAndView modelAndView, @ModelAttribute("data") SessionData data, Model model) throws Exception{
 			//modelAndView.addAttribute(search())
-			String query = "football";
-					//data.getQuery();
-			modelAndView.setViewName("yellow");
+			String q=(String) model.getAttribute("query");
+			String query = (String)data.getQuery();
+
 			algo g1 = new algo();
 			ArrayList results = g1.search(query);
 		//ResultLists resultLists = new ResultLists();

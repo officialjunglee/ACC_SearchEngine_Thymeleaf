@@ -6,8 +6,8 @@
 	</title>
 	</head>
 	<body>
-		<form action="/search" th:object="${data}">
-		<input type="text" th:field="${data.query}"/>
+		<form action="/submitform" th:object="${data}" method = "post">
+		<input type="text" id ="text" th:field="${data.query}"/>
 		<input type="submit" value="Search!" />
 		</form>
 		<h1 th:text = "${message}"></h1>
