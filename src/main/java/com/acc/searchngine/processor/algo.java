@@ -27,8 +27,8 @@ public class algo {
         Document webData=scraper.get_google_Data(query);
         Elements links = webData.select("a[href]");
         StringOperations stoper = new StringOperations();
-        String[] domain_list=new String[50];
-        String[] temp_list=new String[50];
+        String[] domain_list=new String[15];
+        String[] temp_list=new String[15];
         ArrayList result_list = new ArrayList<TreeMap>();
         TreeMap<String,ArrayList> final_data = new TreeMap<String,ArrayList>();
         int i =0;
@@ -48,10 +48,11 @@ public class algo {
                 //temp=temp.substring(s);
                 // Use Regex to obtain Domain Name
                 String domain=stoper.dnsExtractor(temp,true);
-                if(domain!=null)
+                String url = temp.substring(0,temp.indexOf("&ved"));
+                if(domain!=null&&url!=null)
                 {
                     domain_list[i]=domain;
-                    temp_list[i]=temp;
+                    temp_list[i]=url;
                     i++;
                 }
 
@@ -82,7 +83,7 @@ public class algo {
         // Sort the Results in Alphabetical Order using Merge Sort
         Sort msort = new Sort();
         //msort.shellsort(temp_list);
-        msort.mergeSort(finalDomainList);
+        msort.mergeSort(temp_list);
         for(String temp : temp_list) {
             if(temp != null && temp.length() > 0) {
                 int d = temp.indexOf("http");
