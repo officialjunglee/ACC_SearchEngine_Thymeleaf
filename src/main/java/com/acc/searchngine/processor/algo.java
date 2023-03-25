@@ -13,12 +13,6 @@ import java.io.IOException;
 import java.util.*;
 
 public class algo {
-    public static void main() throws IOException {
-        String search_query = "football";
-
-        //String search = search(search_query);
-
-    }
 
     public static ArrayList search(String query) throws IOException
     {
@@ -36,7 +30,6 @@ public class algo {
         for (Element link : links)
             f1.write(link.attr("href")+"\n");
         f1.close();
-        //System.out.println("File Generated!!!");
         for (Element link : links) {
             String temp = link.attr("href");
             if(temp.startsWith("/url?")){
@@ -44,8 +37,6 @@ public class algo {
                 {
                     break;
                 }
-                //int s = temp.indexOf("q");
-                //temp=temp.substring(s);
                 // Use Regex to obtain Domain Name
                 String domain=stoper.dnsExtractor(temp,true);
                 String url = temp.substring(0,temp.indexOf("&ved"));
@@ -66,20 +57,6 @@ public class algo {
                 finalDomainList[i]=domain_list[i];
                 i++;
             }
-        i=0;
-        /*for(String temp: domain_list)
-        {
-            if(temp!=null)
-            {
-                if(temp.indexOf('.')!=temp.lastIndexOf('.'))
-                    temp_list[i++]=temp.substring(temp.indexOf('.')+1,temp.lastIndexOf('.'));
-                else
-                    temp_list[i++]=temp;
-            }
-            else
-                temp_list[i++]=" ";
-
-        }*/
         // Sort the Results in Alphabetical Order using Merge Sort
         Sort msort = new Sort();
         //msort.shellsort(temp_list);
