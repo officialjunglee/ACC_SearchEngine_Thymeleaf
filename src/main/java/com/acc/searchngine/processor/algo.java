@@ -14,6 +14,8 @@ import java.util.*;
 
 public class algo {
 
+    public static void main(String[] args) {
+    }
     public static ArrayList search(String query) throws IOException
     {
         // Fetch Data from Google
