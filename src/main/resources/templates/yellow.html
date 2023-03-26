@@ -22,7 +22,7 @@
         </div2>
         <br>
         Link: <div3 th:each="l:${item.url}">
-            <a href target="_self">
+            <a th:href ="@{{id}(id=${item.url})}">
                 <span th:text="${l}"/>
             </a>
     </div3>
